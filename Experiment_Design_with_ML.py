@@ -2,17 +2,15 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
 
-# Core libraries
-import pandas as pd
-import numpy as np
-
 # Modeling libraries
-from sklearn.tree import DecisionTreeRegressor
+from sklearn.tree import DecisionTreeRegressor, export_text, export_graphviz
 from sklearn.linear_model import LinearRegression
 import xgboost as xgb
 
-# Connector packages
+from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error
 import seaborn as sns
+import matplotlib.pyplot as plt
+import graphviz
 
 # 3.3 Import the Data
 # Import data
@@ -83,11 +81,6 @@ print(train_df.head())
 # Display the testing data
 print(test_df.head())
 
-# Import necessary libraries
-from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error
-import seaborn as sns
-import matplotlib.pyplot as plt
 
 # Helper function to calculate metrics
 def calc_metrics(model, new_data):
@@ -123,28 +116,6 @@ print(f"RMSE: {rmse}\nR-squared: {r_squared}\nMAE: {mae}")
 # Visualize predictions
 plot_predictions(model_01_lm, test_df)
 
-# 3.8.2 Helper Functions
-# Helper function to calculate metrics
-def calc_metrics(model, new_data):
-    predictions = model.predict(new_data.drop(columns=['row_id', 'Enrollments']))
-    rmse = np.sqrt(mean_squared_error(new_data['Enrollments'], predictions))
-    r_squared = r2_score(new_data['Enrollments'], predictions)
-    mae = mean_absolute_error(new_data['Enrollments'], predictions)
-    
-    return rmse, r_squared, mae
-
-# Helper function to plot predictions
-def plot_predictions(model, new_data):
-    predictions = model.predict(new_data.drop(columns=['row_id', 'Enrollments']))
-    df = pd.DataFrame({'observation': new_data['row_id'], 'actual': new_data['Enrollments'], 'predicted': predictions})
-    
-    # Visualize
-    plt.figure(figsize=(10, 6))
-    sns.scatterplot(x='observation', y='value', hue='key', data=df.melt(id_vars='observation'), palette="deep")
-    plt.title("Enrollments: Prediction vs Actual")
-    plt.xlabel("Observation")
-    plt.ylabel("Value")
-    plt.show()
 
 '''
 In this Python implementation:
@@ -155,36 +126,8 @@ The plot_predictions function visualizes the predictions compared to actual valu
 The linear regression model is trained on the training set and evaluated on the test set.
 Metrics and predictions are displayed and visualized for analysis.'''
 
-# Import necessary libraries
-from sklearn.tree import DecisionTreeRegressor, export_text, export_graphviz
-import graphviz
-from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error
 
 # 3.8.3 Decision Trees
-# Decision Tree Helper Functions
-
-# Helper function to calculate metrics
-def calc_metrics(model, new_data):
-    predictions = model.predict(new_data.drop(columns=['row_id', 'Enrollments']))
-    rmse = np.sqrt(mean_squared_error(new_data['Enrollments'], predictions))
-    r_squared = r2_score(new_data['Enrollments'], predictions)
-    mae = mean_absolute_error(new_data['Enrollments'], predictions)
-    
-    return rmse, r_squared, mae
-
-# Helper function to plot predictions
-def plot_predictions(model, new_data):
-    predictions = model.predict(new_data.drop(columns=['row_id', 'Enrollments']))
-    df = pd.DataFrame({'observation': new_data['row_id'], 'actual': new_data['Enrollments'], 'predicted': predictions})
-    
-    # Visualize
-    plt.figure(figsize=(10, 6))
-    sns.scatterplot(x='observation', y='value', hue='key', data=df.melt(id_vars='observation'), palette="deep")
-    plt.title("Enrollments: Prediction vs Actual")
-    plt.xlabel("Observation")
-    plt.ylabel("Value")
-    plt.show()
-
 # Create decision tree model
 model_02_decision_tree = DecisionTreeRegressor(
     criterion='mse',  # mean squared error
@@ -218,37 +161,7 @@ Metrics and predictions are displayed and visualized for analysis.
 The decision tree rules are visualized using export_graphviz and graphviz. Adjust the parameters accordingly for a clear visualization.
 '''
 
-# Import necessary libraries
-import xgboost as xgb
-from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error
-import seaborn as sns
-import matplotlib.pyplot as plt
-
 # 3.8.4 XGBoost
-# XGBoost Helper Functions
-
-# Helper function to calculate metrics
-def calc_metrics(model, new_data):
-    predictions = model.predict(xgb.DMatrix(new_data.drop(columns=['row_id', 'Enrollments'])))
-    rmse = np.sqrt(mean_squared_error(new_data['Enrollments'], predictions))
-    r_squared = r2_score(new_data['Enrollments'], predictions)
-    mae = mean_absolute_error(new_data['Enrollments'], predictions)
-    
-    return rmse, r_squared, mae
-
-# Helper function to plot predictions
-def plot_predictions(model, new_data):
-    predictions = model.predict(xgb.DMatrix(new_data.drop(columns=['row_id', 'Enrollments'])))
-    df = pd.DataFrame({'observation': new_data['row_id'], 'actual': new_data['Enrollments'], 'predicted': predictions})
-    
-    # Visualize
-    plt.figure(figsize=(10, 6))
-    sns.scatterplot(x='observation', y='value', hue='key', data=df.melt(id_vars='observation'), palette="deep")
-    plt.title("Enrollments: Prediction vs Actual")
-    plt.xlabel("Observation")
-    plt.ylabel("Value")
-    plt.show()
-
 # Set seed for reproducibility (optional)
 np.random.seed(123)
 
