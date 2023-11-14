@@ -59,6 +59,6 @@ Customer-Centric Features: Lack of features related to customer characteristics 
 
 ### Cross-Validation Necessity for Model Tuning
 
-Cross-Validation Significance: Cross-validation is imperative to prevent models from overfitting to the test dataset. While not detailed in this tutorial, it's a fundamental concept taught in the Advanced Machine Learning Course - Data Science For Business with R DS4B 201-R.
+Cross-Validation Significance: Cross-validation is imperative to prevent models from overfitting to the test dataset. 
 
 Model Performance Results: Decision Tree and XGBoost parameters were chosen using 5-Fold Cross Validation, with results indicating the average Mean Absolute Error (MAE). Notably, the baseline Linear Regression model demonstrated comparable performance to XGBoost, suggesting simplicity in the dataset. Anticipated improvements, incorporating model-boosting recommendations, might position XGBoost as the preferred model as system complexity increases.
