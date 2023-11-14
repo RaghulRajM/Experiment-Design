@@ -29,3 +29,8 @@ The repo guides readers through the implementation of Machine Learning for A/B T
 The analysis investigates the features contributing to enrollments and assesses the impact of the new "Setting Expectations" form on enrollments. The distinction between the experiment group (Experiencing the form) and the control group (Not seeing the form) allows for a detailed evaluation.
 
 This implementation not only aligns with best practices but also offers a practical approach to A/B Testing with Machine Learning, empowering business professionals to make data-driven decisions and advance their careers in the realms of Data Science and Machine Learning.
+
+### Data source:
+
+-  https://www.kaggle.com/datasets/tammyrotem/control-data
+-  https://www.kaggle.com/datasets/tammyrotem/experiment-data
