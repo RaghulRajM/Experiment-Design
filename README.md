@@ -34,3 +34,31 @@ This implementation not only aligns with best practices but also offers a practi
 
 -  https://www.kaggle.com/datasets/tammyrotem/control-data
 -  https://www.kaggle.com/datasets/tammyrotem/experiment-data
+
+### Business Insights - Machine Learning Advantages
+
+Utilizing Machine Learning for A/B Testing yields several crucial advantages:
+
+Understanding Complex Systems: Machine Learning revealed that Pageviews and Clicks drive the system, insights not easily discernible through Statistical Inference.
+
+Direction and Magnitude of Experiments: Machine Learning provided insights into the experiment's impact. For instance, Linear Regression highlighted a drop of -17.6 Enrollments Per Day when Experiment equals 1. Statistical Inference would only indicate the presence or absence of an effect.
+
+### Udacity's Strategic Considerations:
+
+To maximize enrollments, focus on increasing Page Views, identified as the most critical feature in two out of three models.
+
+Introducing a popup form may decrease enrollments if time commitment alerts are vital. Decision Tree rules and Linear Regression both indicate a negative impact when Experiment is less than or equal to 0.5 or equals 1, respectively. Decisions should align with Udacity’s overarching goals, determined collaboratively by business and marketing teams.
+
+### Key Considerations: Cross-Validation and Model Performance Enhancement
+
+#### Enhancing Model Performance
+
+Data Aggregation Issue: The current aggregated data restricts a comprehensive understanding of customer behavior. Analyzing unaggregated data is recommended for a nuanced understanding of individual customer enrollment probabilities.
+
+Customer-Centric Features: Lack of features related to customer characteristics hinders modeling. Inclusion of pertinent features is pivotal for enhancing model performance and gaining insights into complex purchasing behavior.
+
+### Cross-Validation Necessity for Model Tuning
+
+Cross-Validation Significance: Cross-validation is imperative to prevent models from overfitting to the test dataset. While not detailed in this tutorial, it's a fundamental concept taught in the Advanced Machine Learning Course - Data Science For Business with R DS4B 201-R.
+
+Model Performance Results: Decision Tree and XGBoost parameters were chosen using 5-Fold Cross Validation, with results indicating the average Mean Absolute Error (MAE). Notably, the baseline Linear Regression model demonstrated comparable performance to XGBoost, suggesting simplicity in the dataset. Anticipated improvements, incorporating model-boosting recommendations, might position XGBoost as the preferred model as system complexity increases.
